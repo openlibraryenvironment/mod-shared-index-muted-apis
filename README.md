@@ -2,9 +2,11 @@
 
 
 ## Purpose
-Reduce the installation footprint of the shared index by setting up faux APIs as stand-ins for certain real but non-essential APIs that are requested in the `requires` sections of the core shared index modules. This "mutes" dependency trees of secondary modules that the shared index doesn't currently need. 
+The purpose of this module is to reduce the installation footprint of the shared index by setting up faux APIs to satisfy expressed requirements in core shared index modules for unnecessary secondary modules. 
 
-The motivation is to simplify the installation of a shared index for development purposes. It's probably only useful in scenarios where the developer installs everything by hand - rather than using a prebuilt back-end box with the whole FOLIO ecosystem in it. 
+The faux APIs act as stand-ins for certain real but non-essential APIs that are requested in the `requires` sections of the core shared index modules. This way it is not necessary to actually install those secondary modules or any next levels of dependencies that they may pull in. 
+
+The motivation is to simplify the installation of a shared index for development purposes. It's probably only useful in scenarios where the developer installs everything by hand - rather than using a prebuilt back-end box with the whole FOLIO back-end ecosystem in it. 
 
 Though something along these lines _could_ be considered for larger server installations as well, such blunt tactics may not be appropriate for a production installation.  
 ## Rationale
