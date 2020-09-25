@@ -32,7 +32,7 @@ At this point the shared index does not need or use FOLIO circulation capability
 
 The `Inventory Module` requests `source-record-storage` and Pub-Sub to be present, but the shared index has its own source storage and doesn't need pub-sub functionality at this point. 
 
-Muting those dependencies greatly reduces the footprint of the overall FOLIO install for the shared index, in terms of:
+Muting those dependencies reduces the footprint of the overall FOLIO install significantly for the shared index, in terms of:
   - the number/length of scripts etc needed to install the shared index for development purposes
   - the time it takes to complete the installation process 
   - the complexity of upgrading modules when new FOLIO releases are out
