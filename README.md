@@ -2,15 +2,15 @@
 
 
 ## Purpose
-The purpose of this module is to reduce the installation footprint of the shared index by setting up faux APIs to satisfy expressed requirements in core shared index modules for unnecessary secondary modules. 
+The purpose of this module is to reduce the installation footprint of the shared index by setting up faux APIs to satisfy certain expressed requirements in some of the core shared index modules, namely requirements for secondary modules that actually aren't necessary for the shared index to function. 
 
-The faux APIs act as stand-ins for certain real but non-essential APIs that are requested in the `requires` sections of the core shared index modules. This way it is not necessary to actually install those secondary modules or any next levels of dependencies that they may pull in. 
+The faux APIs act as stand-ins for unneeded APIs that are requested in the `requires` sections of the essential modules. This way it is not necessary to actually install those secondary modules or any other dependencies that they may in turn pull in. 
 
 The motivation is to simplify the installation of a shared index for development purposes. It's probably only useful in scenarios where the developer installs everything by hand - rather than using a prebuilt back-end box with the whole FOLIO back-end ecosystem in it. 
 
-Though something along these lines _could_ be considered for larger server installations as well, such blunt tactics may not be appropriate for a production installation.  
+Though something along these lines _could_ be considered for a shared demo or test service as well, such blunt tactics may not be appropriate for a production installation.  
 ## Rationale
-The Shared Index only needs a few FOLIO modules to serve its purpose. Besides `Okapi` and `Stripes` the essential modules are:
+The Shared Index only needs a few FOLIO modules to serve its purposes. Besides `Okapi` and `Stripes` the essential modules are:
 
 Backend 
 - `Inventory Storage Module`
@@ -31,6 +31,8 @@ However, some of these essential modules declare dependencies on secondary modul
 At this point the shared index does not need or use FOLIO circulation capability, for example, but `ui-inventory` requests the `circulation` API in its 'requires' section, which in turn requires a number of other modules to be present.
 
 The `Inventory Module` requests `source-record-storage` and Pub-Sub to be present, but the shared index has its own source storage and doesn't need pub-sub functionality at this point. 
+
+The `users` module requires `notify`, which in turn pulls in a number of other modules for sending out notifications. It's muted here because it's not needed for developing the shared index but it may or may not be required for user management in a production installation of the shared index.  
 
 Muting those dependencies reduces the footprint of the overall FOLIO install significantly for the shared index, in terms of:
   - the number/length of scripts etc needed to install the shared index for development purposes
