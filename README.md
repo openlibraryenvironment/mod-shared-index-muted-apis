@@ -1,4 +1,4 @@
-# Shared Index Muted APIs
+# Shared Index: Muted APIs
 
 
 ## Purpose
