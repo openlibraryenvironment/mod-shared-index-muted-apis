@@ -1,0 +1,7 @@
+{
+  "srvcId" : "${artifactId}-${version}",
+  "descriptor" : {
+    "exec" : "java -jar ../mod-shared-index-muted-apis/target/mod-shared-index-muted-apis-fat.jar -Dhttp.port=%p",
+    ]
+  }
+}
